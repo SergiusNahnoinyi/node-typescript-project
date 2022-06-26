@@ -1,5 +1,12 @@
-import { Request, Response, NextFunction } from 'express';
+import { RequestHandler } from 'express';
 
-export const getAll = async (req: Request, res: Response, next: NextFunction) => {
-  return res.status(200).json({});
+import Article, { IArticle } from '../models/Article';
+
+export const getAll: RequestHandler = async (req, res, next) => {
+  try {
+    const articles = await Article.find();
+    res.json({ message: 'Success', code: 200, data: { articles } });
+  } catch (error) {
+    next(error);
+  }
 };

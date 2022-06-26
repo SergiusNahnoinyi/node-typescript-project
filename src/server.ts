@@ -13,7 +13,7 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/articles', router);
+app.use('/api', router);
 
 mongoose
   .connect(config.mongo.url)
@@ -35,7 +35,7 @@ app.use((req: Request, res: Response) => {
     code: 404,
     message: `Use api on routes: 
     GET /api/articles - get articles
-    POST /api/articles - add article
+    POST /api/articles - create article
     PUT /api/articles/:id - update article
     DELETE /api/articles/:id - delete article`,
     data: 'Not found',

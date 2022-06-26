@@ -25,7 +25,7 @@ const ArticlesSchema = new mongoose.Schema({
 });
 
 const Article: Model<ArticleType> = mongoose.model<ArticleType>(
-  'Article',
+  'article',
   ArticlesSchema,
 );
 
