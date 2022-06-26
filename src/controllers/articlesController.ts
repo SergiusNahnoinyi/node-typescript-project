@@ -10,3 +10,13 @@ export const getAll: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+
+export const createArticle: RequestHandler = async (req, res, next) => {
+  try {
+    const data: IArticle = req.body;
+    const article = await Article.create(data);
+    res.json({ message: 'Created', code: 201, data: { article } });
+  } catch (error) {
+    next(error);
+  }
+};
