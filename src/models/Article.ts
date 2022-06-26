@@ -9,20 +9,26 @@ export interface IArticle {
   published?: boolean;
 }
 
-const ArticlesSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
+const ArticlesSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    published: {
+      type: Boolean,
+      required: false,
+    },
   },
-  description: {
-    type: String,
-    required: true,
+  {
+    timestamps: true,
+    versionKey: false,
   },
-  published: {
-    type: Boolean,
-    required: false,
-  },
-});
+);
 
 const Article: Model<ArticleType> = mongoose.model<ArticleType>(
   'article',
