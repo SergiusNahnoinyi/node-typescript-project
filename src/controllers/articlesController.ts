@@ -11,6 +11,19 @@ export const getAll: RequestHandler = async (req, res, next) => {
   }
 };
 
+export const getById: RequestHandler = async (req, res, next) => {
+  try {
+    const { articleId } = req.params;
+    const article = await Article.findOne({ _id: articleId });
+    if (!article) {
+      return res.status(404).json({ message: 'Not found' });
+    }
+    res.json({ message: 'Success', code: 200, data: { article } });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const createArticle: RequestHandler = async (req, res, next) => {
   try {
     const data: IArticle = req.body;
