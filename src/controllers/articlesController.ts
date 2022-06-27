@@ -24,6 +24,19 @@ export const getById: RequestHandler = async (req, res, next) => {
   }
 };
 
+export const getByTitle: RequestHandler = async (req, res, next) => {
+  try {
+    const { title } = req.query;
+    const article = await Article.find({ title: title });
+    if (!article) {
+      return res.status(404).json({ message: 'Not found' });
+    }
+    res.json({ message: 'Success', code: 200, data: { article } });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const createArticle: RequestHandler = async (req, res, next) => {
   try {
     const data: IArticle = req.body;

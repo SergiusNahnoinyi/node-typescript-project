@@ -1,11 +1,13 @@
 import express from 'express';
 
-import { getAll, getById, createArticle } from '../controllers/articlesController';
+import { getAll, getById, getByTitle, createArticle } from '../controllers/articlesController';
 import { validation, schema } from '../middlewares/validationMiddleware';
 
 const router = express.Router();
 
 router.get('/articles', getAll);
+
+router.get('/articles/title', getByTitle);
 
 router.get('/articles/:articleId', getById);
 
