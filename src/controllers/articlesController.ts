@@ -46,3 +46,14 @@ export const createArticle: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+
+export const updateArticle: RequestHandler = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const data: IArticle = req.body;
+    const article = await Article.findByIdAndUpdate(id, data, { new: true });
+      res.json({ message: "Updated", code: 200, data: { article } });
+  } catch (error) {
+    next(error);
+  }
+};
