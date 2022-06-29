@@ -16,10 +16,10 @@ router.get('/articles', getAll);
 
 router.get('/articles/title', getByTitle);
 
-router.get('/articles/:articleId', getById);
+router.get('/articles/:id', getById);
 
 router.post('/articles', validation(schema), createArticle);
 
-router.put('/:articleId', validation(schema), updateArticle);
+router.put('/articles/:id', validation(schema), updateArticle);
 
 export default router;

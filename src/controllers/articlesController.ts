@@ -13,8 +13,8 @@ export const getAll: RequestHandler = async (req, res, next) => {
 
 export const getById: RequestHandler = async (req, res, next) => {
   try {
-    const { articleId } = req.params;
-    const article = await Article.findOne({ _id: articleId });
+    const { id } = req.params;
+    const article = await Article.findOne({ _id: id });
     if (!article) {
       return res.status(404).json({ message: 'Not found' });
     }
