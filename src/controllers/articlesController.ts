@@ -52,7 +52,20 @@ export const updateArticle: RequestHandler = async (req, res, next) => {
     const { id } = req.params;
     const data: IArticle = req.body;
     const article = await Article.findByIdAndUpdate(id, data, { new: true });
-      res.json({ message: "Updated", code: 200, data: { article } });
+    res.json({ message: 'Updated', code: 200, data: { article } });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteArticleById: RequestHandler = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const article = await Article.findByIdAndDelete(id);
+    if (!article) {
+      return res.status(404).json({ message: 'Not found' });
+    }
+    res.json({ message: 'Deleted', code: 200, data: { article } });
   } catch (error) {
     next(error);
   }
