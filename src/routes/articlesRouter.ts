@@ -6,6 +6,7 @@ import {
   getByTitle,
   createArticle,
   updateArticle,
+  deleteArticles,
   deleteArticleById,
 } from '../controllers/articlesController';
 
@@ -22,6 +23,8 @@ router.get('/articles/:id', getById);
 router.post('/articles', validation(schema), createArticle);
 
 router.put('/articles/:id', validation(schema), updateArticle);
+
+router.delete('/articles', deleteArticles);
 
 router.delete('/articles/:id', deleteArticleById);
 

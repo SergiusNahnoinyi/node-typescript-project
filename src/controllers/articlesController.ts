@@ -58,6 +58,15 @@ export const updateArticle: RequestHandler = async (req, res, next) => {
   }
 };
 
+export const deleteArticles: RequestHandler = async (req, res, next) => {
+  try {
+    const articles = await Article.deleteMany();
+    res.json({ message: 'Deleted', code: 200, data: { articles } });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const deleteArticleById: RequestHandler = async (req, res, next) => {
   try {
     const { id } = req.params;
