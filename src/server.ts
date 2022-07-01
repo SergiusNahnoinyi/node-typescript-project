@@ -20,7 +20,7 @@ mongoose
   .then(() => {
     app.listen(config.server.port, function () {
       console.log(
-        `Database connection successfully. Use our API on port: ${config.server.port}`,
+        `Database connection successfully. Use our API on port: ${config.server.port || 4000}`,
       );
     });
   })
