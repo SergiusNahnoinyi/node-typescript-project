@@ -4,7 +4,7 @@
   "description": "REST API for the articles collection using TypeScript and Node",
   "main": "src/server.ts",
   "scripts": {
-    "start": "nodemon build/server.js",
+    "start": "node build/server.js",
     "postinstall": "tsc"
   },
   "repository": {
