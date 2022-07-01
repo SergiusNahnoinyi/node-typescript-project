@@ -4,8 +4,6 @@
   "description": "REST API for the articles collection using TypeScript and Node",
   "main": "src/server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.ts",
     "start": "nodemon build/server.js",
     "postinstall": "tsc"
   },
